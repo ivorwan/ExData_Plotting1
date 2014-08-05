@@ -14,6 +14,8 @@ data <- transform(data, Global_active_power=as.numeric(as.character(Global_activ
 
 
 ## PLOT 4
+
+png(filename='plot4.png', width=480, height=480, units='px')
 par(mfcol=c(2,2))
 with(data, {
     plot(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Global_active_power, type="n", ylab="Global Active Power", xlab="")
@@ -23,7 +25,7 @@ with(data, {
     lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_1)
     lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_2, col="red")
     lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_3, col="blue")
-    legend("topright", pch = "___", col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), bty="n")
+    legend("topright", col = c("black", "blue", "red"), lty=c(1,1,1), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), bty="n")
     
     plot(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Voltage, xlab="datetime", type="n")
     lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Voltage, xlab="datetime")
@@ -34,5 +36,5 @@ with(data, {
     
 })
 
-dev.copy(png, file="plot4.png")
+#dev.copy(png, file="plot4.png")
 dev.off()

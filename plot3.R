@@ -14,14 +14,17 @@ data <- transform(data, Global_active_power=as.numeric(as.character(Global_activ
 
 
 ## PLOT 3
+png(filename='plot3.png', width=480, height=480, units='px')
 
 par(mfcol=c(1,1))
 
-with(data, plot(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_1, type="n", ylab="Energy sub metering", xlab=""))
-with(data, lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_1))
-with(data, lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_2, col="red"))
-with(data, lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_3, col="blue"))
-legend("topright", pch = "___", col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+with (data, {
+    plot(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_1, type="n", ylab="Energy sub metering", xlab="")
+    lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_1)
+    lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_2, col="red")
+    lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Sub_metering_3, col="blue")
+    legend("topright", col = c("black", "blue", "red"), lty=c(1,1,1), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+})
 
-dev.copy(png, file="plot3.png")
+#dev.copy(png, file="plot3.png")
 dev.off()

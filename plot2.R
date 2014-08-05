@@ -15,9 +15,10 @@ data <- transform(data, Global_active_power=as.numeric(as.character(Global_activ
 
 
 ## PLOT 2
+png(filename='plot2.png', width=480, height=480, units='px')
 par(mfcol=c(1,1))
 
 with(data, plot(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Global_active_power, type="n", ylab="Global Active Power (kilowatts)", xlab=""))
 with(data, lines(strptime(paste(Date, Time), "%Y-%m-%d %H:%M"), Global_active_power))
-dev.copy(png, file="plot2.png")
+#dev.copy(png, file="plot2.png")
 dev.off()

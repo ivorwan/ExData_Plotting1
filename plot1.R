@@ -14,7 +14,8 @@ data <- transform(data, Global_active_power=as.numeric(as.character(Global_activ
 
 
 ## PLOT 1
+png(filename='plot1.png', width=480, height=480, units='px')
 par(mfcol=c(1,1))
 hist(data$Global_active_power, col="Red", xlab="Global Acitve Power(killowatts)", ylab="Frequency", main="Global Active Power")
-dev.copy(png, file="plot1.png")
+#dev.copy(png, file="plot1.png")
 dev.off()
